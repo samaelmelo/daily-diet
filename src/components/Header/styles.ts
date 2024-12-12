@@ -4,7 +4,7 @@ import LogoSvg from '@assets/logo.svg'
 export const Container = styled.View`
 	flex-direction: row;
 	justify-content: space-between;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 `
 
 export const Logo = styled(LogoSvg)`

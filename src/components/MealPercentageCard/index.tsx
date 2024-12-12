@@ -5,25 +5,34 @@ import {
 	Content,
 	Information,
 	Percentage,
+	StyleDietProps,
 } from './styles'
 import { ArrowUpRight, ArrowLeft } from 'phosphor-react-native'
-import { useState } from 'react'
 
-export const MealPercentageCard = () => {
-	const [isExpanded, setIsExpanded] = useState(false)
+type Props = {
+	isExpanded?: boolean
+	onNavigation: () => void
+	type: StyleDietProps
+}
 
+export const MealPercentageCard = ({
+	isExpanded = false,
+	onNavigation,
+	type = 'WITHIN_DIET',
+}: Props) => {
 	const { COLORS } = useTheme()
 
 	return (
-		<Container>
-			<ButtonExpand
-				onPress={() => setIsExpanded((prevState) => !prevState)}
-				isExpanded={isExpanded}
-			>
+		<Container isExpanded={isExpanded} type={type}>
+			<ButtonExpand onPress={() => onNavigation()} isExpanded={isExpanded}>
 				{isExpanded ? (
-					<ArrowLeft color={COLORS.GREEN_DARK} />
+					<ArrowLeft
+						color={type === 'WITHIN_DIET' ? COLORS.GREEN_DARK : COLORS.RED_DARK}
+					/>
 				) : (
-					<ArrowUpRight color={COLORS.GREEN_DARK} />
+					<ArrowUpRight
+						color={type === 'WITHIN_DIET' ? COLORS.GREEN_DARK : COLORS.RED_DARK}
+					/>
 				)}
 			</ButtonExpand>
 

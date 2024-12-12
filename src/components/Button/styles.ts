@@ -18,16 +18,15 @@ export const Container = styled(TouchableOpacity)<Props>`
 	border-radius: 6px;
 
 	flex-direction: row;
-  gap: 10px;
+	gap: 10px;
 
 	${({ theme, type }) => css`
 		background-color: ${type === 'PRIMARY'
 			? theme.COLORS.GRAY_2
 			: theme.COLORS.GRAY_7};
 
-		border: 1px solid ${type === 'PRIMARY'
-			? theme.COLORS.GRAY_2
-			: theme.COLORS.GRAY_2};
+		border: 1px solid
+			${type === 'PRIMARY' ? theme.COLORS.GRAY_2 : theme.COLORS.GRAY_2};
 	`}
 `
 

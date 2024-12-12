@@ -1,13 +1,26 @@
 import styled, { css } from 'styled-components/native'
 
-export const Container = styled.View`
-	padding: 14px 14px 24px 14px;
-	border-radius: 8px;
+export type StyleDietProps = 'OFF_DIET' | 'WITHIN_DIET'
 
-	background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+type IProps = {
+	isExpanded: boolean
+	type: StyleDietProps
+}
 
-	margin-bottom: 20px;
+export const Container = styled.View<IProps>`
+	${({ theme, isExpanded, type }) => css`
+		background-color: ${type === 'WITHIN_DIET'
+			? theme.COLORS.GREEN_LIGHT
+			: theme.COLORS.RED_LIGHT};
+
+		padding: ${isExpanded ? '25px 14px 50px' : '14px 14px 24px'};
+
+		border-radius: ${isExpanded ? 0 : '8px'};
+
+		margin-bottom: ${isExpanded ? 0 : '20px'};
+	`}
 `
+
 type ButtonExpandProps = {
 	isExpanded: boolean
 }
@@ -36,6 +49,6 @@ export const Information = styled.Text`
 	${({ theme }) => css`
 		color: ${theme.COLORS.GRAY_2};
 		font-family: ${theme.FONT_FAMILY.REGULAR};
-		font-size: ${theme.FONT_SIZE['MD']}px;
+		font-size: ${theme.FONT_SIZE.XL}px;
 	`}
 `

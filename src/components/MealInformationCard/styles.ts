@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components/native'
 export const Container = styled.View`
 	width: 100%;
 
-	margin-bottom: 12px;
+	margin-bottom: 8px;
 	padding: 15px;
 
 	border-radius: 6px;
@@ -35,6 +35,8 @@ export const Time = styled.Text`
 
 export const Meal = styled(Time)`
 	font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+	font-size: ${({theme}) => theme.FONT_SIZE.XL}px;
+
 `
 
 type IdentifierDietProps = {

@@ -6,8 +6,11 @@ import {
 	Button,
 	MealInformationCard,
 } from '@src/components'
+import { useNavigation } from '@react-navigation/native'
 
 export const Meals = () => {
+	const navigation = useNavigation()
+
 	const dataSectionList = [
 		{
 			title: '12.08.22',
@@ -61,11 +64,17 @@ export const Meals = () => {
 		},
 	]
 
+	const TYPE = 'WITHIN_DIET'
+
+	const handleExpandedCard = () => {
+		navigation.navigate('meals-information', { type: TYPE })
+	}
+
 	return (
 		<Container>
 			<Header />
 
-			<MealPercentageCard />
+			<MealPercentageCard onNavigation={handleExpandedCard} type={TYPE} />
 
 			<TextMeals>Refeições</TextMeals>
 
@@ -78,7 +87,7 @@ export const Meals = () => {
 					<TitleSectionList>{section.title}</TitleSectionList>
 				)}
 				renderItem={({ item }) => <MealInformationCard item={item} />}
-				contentContainerStyle={[{ paddingBottom: 50}]}
+				contentContainerStyle={[{ paddingBottom: 50 }]}
 				showsVerticalScrollIndicator={false}
 			/>
 		</Container>
