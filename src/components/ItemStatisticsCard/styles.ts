@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components/native'
-
-export type StyleCardProps = 'OFF_DIET' | 'WITHIN_DIET' | 'INFOS'
+import { StyleCardMealDTO } from '@src/DTO'
 
 type Props = {
-	type: StyleCardProps
+	type: StyleCardMealDTO
 }
 
 export const Container = styled.View<Props>`

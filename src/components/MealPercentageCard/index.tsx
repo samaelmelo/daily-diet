@@ -3,42 +3,41 @@ import {
 	ButtonExpand,
 	Container,
 	Content,
-	Information,
-	Percentage,
-	StyleDietProps,
+	Description,
+	Title,
+	IconArrowLeft,
+	IconArrowUpRight,
 } from './styles'
-import { ArrowUpRight, ArrowLeft } from 'phosphor-react-native'
+import { StyleCardMealDTO } from '@src/DTO'
 
 type Props = {
 	isExpanded?: boolean
+	type: StyleCardMealDTO
 	onNavigation: () => void
-	type: StyleDietProps
+	title: string
+	description?: string
 }
 
 export const MealPercentageCard = ({
 	isExpanded = false,
-	onNavigation,
 	type = 'WITHIN_DIET',
+	title,
+	description,
+	onNavigation,
 }: Props) => {
-	const { COLORS } = useTheme()
-
 	return (
 		<Container isExpanded={isExpanded} type={type}>
-			<ButtonExpand onPress={() => onNavigation()} isExpanded={isExpanded}>
+			<ButtonExpand onPress={onNavigation} isExpanded={isExpanded}>
 				{isExpanded ? (
-					<ArrowLeft
-						color={type === 'WITHIN_DIET' ? COLORS.GREEN_DARK : COLORS.RED_DARK}
-					/>
+					<IconArrowLeft type={type} />
 				) : (
-					<ArrowUpRight
-						color={type === 'WITHIN_DIET' ? COLORS.GREEN_DARK : COLORS.RED_DARK}
-					/>
+					<IconArrowUpRight type={type} />
 				)}
 			</ButtonExpand>
 
 			<Content>
-				<Percentage>90,86%</Percentage>
-				<Information>das refeições dentro da dieta</Information>
+				<Title type={type}>{title}</Title>
+				{description && <Description>{description}</Description>}
 			</Content>
 		</Container>
 	)

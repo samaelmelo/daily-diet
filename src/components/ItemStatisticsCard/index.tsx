@@ -1,9 +1,10 @@
-import { Container, Information, Percentage, StyleCardProps } from './styles'
+import { Container, Information, Percentage } from './styles'
+import { StyleCardMealDTO } from '@src/DTO'
 
 type Props = {
 	title: string
 	description: string
-	type?: StyleCardProps
+	type?: StyleCardMealDTO
 }
 
 export const ItemStatisticsCard = ({

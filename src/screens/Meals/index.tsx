@@ -64,21 +64,34 @@ export const Meals = () => {
 		},
 	]
 
-	const TYPE = 'WITHIN_DIET'
+	const TYPE = 'OFF_DIET'
 
 	const handleExpandedCard = () => {
 		navigation.navigate('meals-information', { type: TYPE })
+	}
+
+	const handleNewMeal = () => {
+		navigation.navigate('new-meal')
 	}
 
 	return (
 		<Container>
 			<Header />
 
-			<MealPercentageCard onNavigation={handleExpandedCard} type={TYPE} />
+			<MealPercentageCard
+				onNavigation={handleExpandedCard}
+				type={TYPE}
+				title="90,86%"
+				description="das refeições dentro da dieta"
+			/>
 
 			<TextMeals>Refeições</TextMeals>
 
-			<Button title="Nova refeição" icon="add" />
+			<Button
+				title="Nova refeição"
+				icon="add"
+				onPress={handleNewMeal}
+			/>
 
 			<SectionList
 				sections={dataSectionList}

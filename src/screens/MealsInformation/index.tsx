@@ -1,8 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Container } from './styles'
 import { MealPercentageCard, Statistics } from '@src/components'
-import { StatusBar } from 'react-native'
-import { useTheme } from 'styled-components/native'
 
 type RouteParams = {
 	type: 'OFF_DIET' | 'WITHIN_DIET'
@@ -20,7 +18,13 @@ export const MealsInformation = () => {
 
 	return (
 		<Container type={type}>
-			<MealPercentageCard isExpanded onNavigation={handleGoBack} type={type} />
+			<MealPercentageCard
+				isExpanded
+				type={type}
+				onNavigation={handleGoBack}
+				title="90,86%"
+				description="das refeições dentro da dieta"
+			/>
 
 			<Statistics />
 		</Container>
